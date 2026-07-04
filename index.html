@@ -15,6 +15,9 @@
     --bg:#F7F6F3; --bg-alt:#FBFBFA; --surface:#FFFFFF; --border:#EAEAEA; --border-soft:rgba(0,0,0,0.06);
     --ink:#1F1D1B; --text:#3D3A36; --muted:#787774; --cta:#141210;
     --blue-bg:#E1F3FE; --blue-tx:#1F6C9F;
+    --red-bg:#FDEBEC; --red-tx:#9F2F2D;
+    --green-bg:#EDF3EC; --green-tx:#346538;
+    --yellow-bg:#FBF3DB; --yellow-tx:#956400;
     --cloth-bg:#FBECE1; --cloth-tx:#B4481F;
     --brand:#1A6BFF; --brand-dk:#1457E0;
     --logo:'Syne','Manrope',sans-serif;
@@ -70,7 +73,15 @@
   .tlogo.mono{font-family:var(--sans);font-weight:800;font-size:22px;line-height:1;}
   .tlogo.mono.cli{font-family:var(--mono);font-size:19px;}
   .tmeta{min-width:0;}
-  .tname{font-weight:700;color:var(--ink);font-size:16px;letter-spacing:-0.01em;}
+  .tname{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-weight:700;color:var(--ink);font-size:16px;letter-spacing:-0.01em;}
+  .verdict{font-family:var(--mono);font-weight:600;font-size:9.5px;letter-spacing:0.04em;text-transform:uppercase;
+    padding:3px 8px;border-radius:9999px;white-space:nowrap;line-height:1.45;}
+  .v-best{background:#346538;color:#fff;}
+  .v-rec{background:var(--green-bg);color:var(--green-tx);}
+  .v-mid{background:var(--yellow-bg);color:var(--yellow-tx);}
+  .v-avoid{background:var(--red-bg);color:var(--red-tx);}
+  .legend{margin-top:18px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .legend .lgl{font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:0.03em;}
   .tvar{font-family:var(--mono);font-weight:500;font-size:11.5px;color:var(--muted);margin-top:2px;word-break:break-word;}
   .tvar.plain{color:var(--muted);}
   .tdesc{font-size:14px;color:var(--text);line-height:1.55;margin-top:8px;}
@@ -158,11 +169,18 @@
     <div class="wrap">
       <div class="eyebrow reveal">Min kompletta AI-verktygslista</div>
       <h1 class="reveal">Alla <em>AI-verktyg</em> jag rankade</h1>
-      <p class="lede reveal">Du bad om listan, här är den. <b>30 verktyg</b> från mina tier list-videor, samlade på ett ställe. För varje: vad det är, var du hittar det och vad det är bäst på. Grupperat efter vad du vill göra, så du snabbt hittar rätt. Jag är inte betald av något av dem, det här är verktygen jag själv använder och testar.</p>
+      <p class="lede reveal">Du bad om listan, här är den. <b>30 verktyg</b> från mina tier list-videor, samlade på ett ställe. För varje: vad det är, var du hittar det och vad det är bäst på. Grupperat efter vad du vill göra, så du snabbt hittar rätt. På de verktyg jag har en tydlig åsikt om har jag satt ett litet betyg, från bäst till avråder. Jag är inte betald av något av dem, det här är verktygen jag själv använder och testar.</p>
       <div class="fmt reveal">
         <span>30 verktyg</span>
         <span>9 kategorier</span>
         <span>Klicka för att öppna</span>
+      </div>
+      <div class="legend reveal">
+        <span class="verdict v-best">★ Bäst</span>
+        <span class="verdict v-rec">Rekommenderas</span>
+        <span class="verdict v-mid">Mid</span>
+        <span class="verdict v-avoid">Avråder</span>
+        <span class="lgl">= min egen ranking</span>
       </div>
     </div>
   </header>
@@ -189,26 +207,26 @@
 
         <a class="tool" href="https://gemini.google.com" target="_blank" rel="noopener">
           <div class="tlogo"><img src="images/logos/gemini.png" alt="Gemini"></div>
-          <div class="tmeta"><div class="tname">Gemini</div><div class="tvar">gemini.google.com</div>
-          <p class="tdesc">Googles assistent, inbyggd i Sök, Gmail och Android. <b>Bäst för:</b> när du redan lever i Googles värld.</p></div>
+          <div class="tmeta"><div class="tname">Gemini <span class="verdict v-rec">Bra för analys</span></div><div class="tvar">gemini.google.com</div>
+          <p class="tdesc">Googles assistent med tillgång till Googles data. <b>Bäst för:</b> att analysera bilder och videor och göra research.</p></div>
         </a>
 
         <a class="tool" href="https://grok.com" target="_blank" rel="noopener">
           <div class="tlogo mono" style="color:#111111">G</div>
-          <div class="tmeta"><div class="tname">Grok</div><div class="tvar">grok.com</div>
-          <p class="tdesc">xAI:s chatt, inbyggd i X. <b>Bäst för:</b> färska svar kopplade till vad som händer på X just nu.</p></div>
+          <div class="tmeta"><div class="tname">Grok <span class="verdict v-mid">Mid</span></div><div class="tvar">grok.com</div>
+          <p class="tdesc">xAI:s chatt, inbyggd i X. <b>Bäst för:</b> färska svar kopplade till vad som händer på X just nu. Helt okej, men inte mitt förstahandsval.</p></div>
         </a>
 
         <a class="tool" href="https://copilot.microsoft.com" target="_blank" rel="noopener">
           <div class="tlogo mono" style="color:#0A6ED1">C</div>
-          <div class="tmeta"><div class="tname">Copilot</div><div class="tvar">copilot.microsoft.com</div>
-          <p class="tdesc">Microsofts gratisassistent, inbyggd i Windows och Edge. <b>Bäst för:</b> vardagshjälp direkt i datorn. Kodvarianten heter GitHub Copilot.</p></div>
+          <div class="tmeta"><div class="tname">Copilot <span class="verdict v-avoid">Avråder</span></div><div class="tvar">copilot.microsoft.com</div>
+          <p class="tdesc">Microsofts gratisassistent, inbyggd i Windows och Edge. Jag tycker den är svag och skulle hoppa över den till förmån för ChatGPT, Claude eller Gemini. Kodvarianten heter GitHub Copilot.</p></div>
         </a>
 
         <a class="tool" href="https://www.apple.com/apple-intelligence/" target="_blank" rel="noopener">
           <div class="tlogo mono" style="color:#555555">A</div>
-          <div class="tmeta"><div class="tname">Apple Intelligence</div><div class="tvar">inbyggt i iPhone, iPad &amp; Mac</div>
-          <p class="tdesc">Apples AI direkt i systemet, med fokus på integritet. <b>Bäst för:</b> snabba skriv- och bildfunktioner. Kräver nyare Apple-enheter.</p></div>
+          <div class="tmeta"><div class="tname">Apple Intelligence <span class="verdict v-avoid">Avråder</span></div><div class="tvar">inbyggt i iPhone, iPad &amp; Mac</div>
+          <p class="tdesc">Apples AI direkt i systemet, med fokus på integritet. Jag rekommenderar den inte än, den ligger efter de andra. Kräver dessutom nyare Apple-enheter.</p></div>
         </a>
 
       </div>
@@ -228,8 +246,8 @@
 
         <a class="tool" href="https://notebooklm.google.com" target="_blank" rel="noopener">
           <div class="tlogo"><img src="images/logos/notebooklm.png" alt="NotebookLM"></div>
-          <div class="tmeta"><div class="tname">NotebookLM</div><div class="tvar">notebooklm.google.com</div>
-          <p class="tdesc">Googles verktyg som svarar utifrån dina egna dokument och kan göra podd-liknande ljudsammanfattningar. <b>Bäst för:</b> att förstå material du laddar upp.</p></div>
+          <div class="tmeta"><div class="tname">NotebookLM <span class="verdict v-rec">Bra för mycket data</span></div><div class="tvar">notebooklm.google.com</div>
+          <p class="tdesc">Googles verktyg som svarar utifrån dina egna dokument och kan göra podd-liknande ljudsammanfattningar. <b>Bäst för:</b> att analysera väldigt stora mängder material du laddar upp.</p></div>
         </a>
 
       </div>
@@ -303,8 +321,8 @@
 
         <a class="tool" href="https://wisprflow.ai" target="_blank" rel="noopener">
           <div class="tlogo"><img src="images/logos/whisperflow.png" alt="Wispr Flow"></div>
-          <div class="tmeta"><div class="tname">Wispr Flow</div><div class="tvar">wisprflow.ai</div>
-          <p class="tdesc">Diktering som gör tal till städad text i vilken app som helst. <b>Bäst för:</b> att skriva med rösten snabbt. Heter Wispr Flow, inte WhisperFlow.</p></div>
+          <div class="tmeta"><div class="tname">Wispr Flow <span class="verdict v-rec">Rekommenderas starkt</span></div><div class="tvar">wisprflow.ai</div>
+          <p class="tdesc">Diktering som gör tal till städad text i vilken app som helst. <b>Bäst för:</b> att skriva med rösten snabbt. Jag rekommenderar den starkt för effektiviteten. Heter Wispr Flow, inte WhisperFlow.</p></div>
         </a>
 
         <a class="tool" href="https://suno.com" target="_blank" rel="noopener">
@@ -336,8 +354,8 @@
 
         <a class="tool" href="https://dreamina.capcut.com" target="_blank" rel="noopener">
           <div class="tlogo mono" style="color:#2B5CFF">S</div>
-          <div class="tmeta"><div class="tname">Seedance 2.0</div><div class="tvar">i Dreamina &amp; CapCut</div>
-          <p class="tdesc">ByteDances videomodell som gör korta HD-klipp med ljud. <b>Bäst för:</b> högkvalitativ kort AI-video. Nås via Dreamina och CapCut, inte en egen sajt.</p></div>
+          <div class="tmeta"><div class="tname">Seedance 2.0 <span class="verdict v-best">★ Bäst för video</span></div><div class="tvar">i Dreamina &amp; CapCut</div>
+          <p class="tdesc">ByteDances videomodell som gör korta HD-klipp med ljud. Enligt mig den bästa AI-videomodellen just nu. Nås via Dreamina och CapCut, inte en egen sajt.</p></div>
         </a>
 
         <a class="tool" href="https://klingai.com" target="_blank" rel="noopener">
@@ -369,14 +387,14 @@
 
         <a class="tool" href="https://gemini.google.com" target="_blank" rel="noopener">
           <div class="tlogo mono" style="color:#B8860B">N</div>
-          <div class="tmeta"><div class="tname">Nano Banana</div><div class="tvar">i Gemini-appen</div>
-          <p class="tdesc">Googles bildmodell i Gemini, stark på att behålla samma karaktär och redigera bilder med ord. <b>Bäst för:</b> att ändra bilder i en konversation.</p></div>
+          <div class="tmeta"><div class="tname">Nano Banana <span class="verdict v-best">★ Bäst för bild</span></div><div class="tvar">i Gemini-appen</div>
+          <p class="tdesc">Googles bildmodell i Gemini, stark på att behålla samma karaktär och redigera bilder med ord. Den andra av mina två favoriter för bild. Nås i Gemini-appen.</p></div>
         </a>
 
         <a class="tool" href="https://chatgpt.com" target="_blank" rel="noopener">
           <div class="tlogo mono" style="color:#10A37F">G</div>
-          <div class="tmeta"><div class="tname">GPT Image 2</div><div class="tvar">i ChatGPT</div>
-          <p class="tdesc">OpenAI:s senaste bildmodell, bra på att få med text i bilden. <b>Bäst för:</b> bilder där texten måste bli rätt. I ChatGPT heter det Images 2.0.</p></div>
+          <div class="tmeta"><div class="tname">GPT Image 2 <span class="verdict v-best">★ Bäst för bild</span></div><div class="tvar">i ChatGPT</div>
+          <p class="tdesc">OpenAI:s senaste bildmodell, bra på att få med text i bilden. En av mina två favoriter för bild. I ChatGPT heter det Images 2.0.</p></div>
         </a>
 
         <a class="tool" href="https://www.canva.com" target="_blank" rel="noopener">
