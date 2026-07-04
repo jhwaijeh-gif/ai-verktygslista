@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Min AI-verktygslista — 30 verktyg | @joudgor</title>
+<meta name="description" content="Alla AI-verktyg från mina tier list-videor, samlade på ett ställe. Vad varje verktyg är, var du hittar det och vad det är bäst på. Grupperat så du snabbt hittar rätt.">
+<meta property="og:title" content="Min AI-verktygslista">
+<meta property="og:description" content="30 AI-verktyg med vad de är, var du hittar dem och vad de är bäst på.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F7F6F3; --bg-alt:#FBFBFA; --surface:#FFFFFF; --border:#EAEAEA; --border-soft:rgba(0,0,0,0.06);
+    --ink:#1F1D1B; --text:#3D3A36; --muted:#787774; --cta:#141210;
+    --blue-bg:#E1F3FE; --blue-tx:#1F6C9F;
+    --cloth-bg:#FBECE1; --cloth-tx:#B4481F;
+    --brand:#1A6BFF; --brand-dk:#1457E0;
+    --logo:'Syne','Manrope',sans-serif;
+    --serif:'Playfair Display',Georgia,serif;
+    --sans:'Manrope','Helvetica Neue',system-ui,-apple-system,sans-serif;
+    --mono:'JetBrains Mono','SF Mono',monospace;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;background:var(--bg);}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:400;line-height:1.6;
+    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+  .wrap{max-width:1060px;margin:0 auto;padding:0 32px;}
+  .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(620px 420px at 78% -6%, rgba(173,140,90,0.05), rgba(173,140,90,0) 70%);}
+  .page{position:relative;z-index:1;}
+
+  /* NAV */
+  nav{position:sticky;top:0;z-index:50;background:rgba(247,246,243,0.72);
+    backdrop-filter:saturate(150%) blur(12px);border-bottom:1px solid var(--border);}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px;}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;transition:opacity .2s ease;}
+  .brand:hover{opacity:.65;}
+  .brand .mk{width:26px;height:26px;border-radius:7px;background:#1A6BFF;display:flex;align-items:center;justify-content:center;}
+  .brand .mk span{color:#fff;font-family:var(--logo);font-weight:800;font-size:15px;line-height:1;}
+  .brand b{font-family:var(--logo);font-weight:800;font-size:17px;color:var(--ink);letter-spacing:-0.01em;}
+  nav .handle{font-family:var(--mono);font-weight:500;font-size:12.5px;color:var(--muted);letter-spacing:0.02em;}
+
+  /* HERO */
+  header.hero{padding:96px 0 20px;}
+  .eyebrow{font-family:var(--mono);font-weight:600;font-size:12px;letter-spacing:0.16em;text-transform:uppercase;color:var(--muted);}
+  h1{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:clamp(38px,6vw,66px);line-height:1.04;letter-spacing:-0.03em;margin:22px 0 0;}
+  h1 em{font-style:italic;font-weight:500;color:var(--cloth-tx);}
+  .lede{font-size:19px;line-height:1.65;color:var(--text);margin-top:26px;max-width:680px;}
+  .lede b{color:var(--ink);font-weight:600;}
+  .fmt{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px;}
+  .fmt span{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:0.04em;
+    color:var(--muted);background:var(--surface);border:1px solid var(--border);border-radius:9999px;padding:7px 14px;}
+
+  /* CATEGORY + GRID */
+  .cats{padding:44px 0 8px;}
+  .cat{margin-top:52px;}
+  .cat:first-child{margin-top:8px;}
+  .cat-kicker{font-family:var(--mono);font-weight:600;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cloth-tx);}
+  .cat h2{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:clamp(23px,3vw,30px);line-height:1.15;letter-spacing:-0.02em;margin-top:6px;}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px;margin-top:20px;}
+
+  .tool{display:flex;gap:15px;padding:18px;border:1px solid var(--border);border-radius:14px;
+    background:var(--surface);text-decoration:none;transition:border-color .18s ease,transform .12s ease,box-shadow .2s ease;}
+  a.tool:hover{border-color:#d9d9d6;transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,0.05);}
+  .tlogo{flex:0 0 auto;width:52px;height:52px;border-radius:12px;background:#fff;border:1px solid var(--border-soft);
+    display:flex;align-items:center;justify-content:center;overflow:hidden;}
+  .tlogo img{width:38px;height:38px;object-fit:contain;display:block;}
+  .tlogo.mono{font-family:var(--sans);font-weight:800;font-size:22px;line-height:1;}
+  .tlogo.mono.cli{font-family:var(--mono);font-size:19px;}
+  .tmeta{min-width:0;}
+  .tname{font-weight:700;color:var(--ink);font-size:16px;letter-spacing:-0.01em;}
+  .tvar{font-family:var(--mono);font-weight:500;font-size:11.5px;color:var(--muted);margin-top:2px;word-break:break-word;}
+  .tvar.plain{color:var(--muted);}
+  .tdesc{font-size:14px;color:var(--text);line-height:1.55;margin-top:8px;}
+  .tdesc b{color:var(--ink);font-weight:600;}
+
+  .fineprint{margin-top:34px;font-family:var(--mono);font-size:12px;color:var(--muted);line-height:1.6;max-width:720px;}
+
+  /* SECTION SHELL */
+  section{padding:64px 0;}
+
+  /* CTA */
+  .cta{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:56px 48px;text-align:center;}
+  .cta h2{font-family:var(--serif);font-weight:600;color:var(--ink);font-size:clamp(25px,3.3vw,35px);line-height:1.1;letter-spacing:-0.02em;}
+  .cta p{color:var(--muted);font-size:16px;margin:14px auto 0;max-width:480px;}
+  .btn{display:inline-block;margin-top:28px;background:var(--cta);color:#fff;text-decoration:none;font-family:var(--sans);
+    font-weight:600;font-size:15px;padding:14px 26px;border-radius:6px;transition:background .2s ease,transform .12s ease;}
+  .btn:hover{background:#332e29;}
+  .btn:active{transform:scale(0.98);}
+  .cta-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:14px;}
+  .cta-btns .btn{margin-top:0;}
+  .btn-ghost{background:transparent;color:var(--ink);border:1px solid var(--border);}
+  .btn-ghost:hover{background:var(--bg);}
+  .btn-book{display:inline-flex;align-items:center;gap:9px;background:var(--brand);color:#fff;}
+  .btn-book:hover{background:var(--brand-dk);}
+  .btn-book svg{width:18px;height:18px;}
+  .cta-or{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:0.04em;margin-top:18px;}
+
+  /* FLOATING SIDE CTA */
+  .float-cta{position:fixed;right:22px;bottom:22px;z-index:60;max-width:312px;
+    background:var(--surface);border:1.5px solid var(--brand);
+    border-radius:14px;box-shadow:0 6px 24px rgba(0,0,0,0.10);transition:transform .14s ease,box-shadow .2s ease;}
+  .float-cta:hover{box-shadow:0 10px 30px rgba(0,0,0,0.14);transform:translateY(-2px);}
+  .fc-link{display:flex;align-items:center;gap:14px;text-decoration:none;padding:14px 16px;}
+  .fc-text{display:flex;flex-direction:column;line-height:1.3;}
+  .fc-text b{font-size:14px;color:var(--ink);font-weight:700;}
+  .fc-text span{font-size:12.5px;color:var(--muted);margin-top:2px;}
+  .fc-btn{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;font-family:var(--mono);font-weight:600;
+    font-size:11px;color:#fff;background:var(--brand);border-radius:9999px;padding:8px 12px;white-space:nowrap;}
+  .fc-btn svg{width:13px;height:13px;}
+  .fc-close{position:absolute;top:-9px;right:-9px;width:22px;height:22px;border-radius:50%;border:1px solid var(--border);
+    background:var(--surface);color:var(--muted);font-size:14px;line-height:1;cursor:pointer;display:flex;
+    align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,0.12);}
+  .fc-close:hover{color:var(--ink);}
+  @media(max-width:820px){
+    .float-cta{right:12px;left:12px;bottom:12px;max-width:none;}
+    .fc-link{justify-content:space-between;padding:12px 14px;}
+    .fc-text b{font-size:13.5px;}
+  }
+
+  /* FOOTER */
+  footer{border-top:1px solid var(--border);padding:34px 0 90px;margin-top:40px;}
+  footer .wrap{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+  footer .h{font-family:var(--mono);font-weight:600;font-size:13px;color:var(--ink);letter-spacing:0.02em;}
+  footer .p{font-family:var(--mono);font-size:12px;color:var(--muted);letter-spacing:0.04em;}
+
+  /* MOTION */
+  .reveal{opacity:0;transform:translateY(12px);}
+  .reveal.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(0.16,1,0.3,1),transform .6s cubic-bezier(0.16,1,0.3,1);}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;}}
+
+  @media(max-width:820px){
+    .wrap{padding:0 22px;}
+    section{padding:52px 0;}
+    header.hero{padding:64px 0 12px;}
+    .grid{grid-template-columns:1fr;}
+    .cta{padding:40px 24px;}
+  }
+</style>
+</head>
+<body>
+<div class="ambient"></div>
+<div class="page">
+
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="https://ikapp.ai" target="_blank" rel="noopener">
+        <div class="mk"><span>I</span></div>
+        <b>Ikapp</b>
+      </a>
+      <div class="handle">@joudgor</div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow reveal">Min kompletta AI-verktygslista</div>
+      <h1 class="reveal">Alla <em>AI-verktyg</em> jag rankade</h1>
+      <p class="lede reveal">Du bad om listan, här är den. <b>30 verktyg</b> från mina tier list-videor, samlade på ett ställe. För varje: vad det är, var du hittar det och vad det är bäst på. Grupperat efter vad du vill göra, så du snabbt hittar rätt. Jag är inte betald av något av dem, det här är verktygen jag själv använder och testar.</p>
+      <div class="fmt reveal">
+        <span>30 verktyg</span>
+        <span>9 kategorier</span>
+        <span>Klicka för att öppna</span>
+      </div>
+    </div>
+  </header>
+
+  <div class="cats wrap">
+
+    <!-- ASSISTENTER -->
+    <div class="cat reveal">
+      <div class="cat-kicker">01 · Allround</div>
+      <h2>AI-assistenter &amp; chatt</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://chatgpt.com" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/chatgpt.png" alt="ChatGPT"></div>
+          <div class="tmeta"><div class="tname">ChatGPT</div><div class="tvar">chatgpt.com</div>
+          <p class="tdesc">OpenAI:s chattassistent och den mest använda. <b>Bäst för:</b> allround, att skriva, bolla idéer och få svar.</p></div>
+        </a>
+
+        <a class="tool" href="https://claude.ai" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/claude.png" alt="Claude"></div>
+          <div class="tmeta"><div class="tname">Claude</div><div class="tvar">claude.ai</div>
+          <p class="tdesc">Anthropics assistent. <b>Bäst för:</b> längre texter, resonemang och kod.</p></div>
+        </a>
+
+        <a class="tool" href="https://gemini.google.com" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/gemini.png" alt="Gemini"></div>
+          <div class="tmeta"><div class="tname">Gemini</div><div class="tvar">gemini.google.com</div>
+          <p class="tdesc">Googles assistent, inbyggd i Sök, Gmail och Android. <b>Bäst för:</b> när du redan lever i Googles värld.</p></div>
+        </a>
+
+        <a class="tool" href="https://grok.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#111111">G</div>
+          <div class="tmeta"><div class="tname">Grok</div><div class="tvar">grok.com</div>
+          <p class="tdesc">xAI:s chatt, inbyggd i X. <b>Bäst för:</b> färska svar kopplade till vad som händer på X just nu.</p></div>
+        </a>
+
+        <a class="tool" href="https://copilot.microsoft.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#0A6ED1">C</div>
+          <div class="tmeta"><div class="tname">Copilot</div><div class="tvar">copilot.microsoft.com</div>
+          <p class="tdesc">Microsofts gratisassistent, inbyggd i Windows och Edge. <b>Bäst för:</b> vardagshjälp direkt i datorn. Kodvarianten heter GitHub Copilot.</p></div>
+        </a>
+
+        <a class="tool" href="https://www.apple.com/apple-intelligence/" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#555555">A</div>
+          <div class="tmeta"><div class="tname">Apple Intelligence</div><div class="tvar">inbyggt i iPhone, iPad &amp; Mac</div>
+          <p class="tdesc">Apples AI direkt i systemet, med fokus på integritet. <b>Bäst för:</b> snabba skriv- och bildfunktioner. Kräver nyare Apple-enheter.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- SÖK & RESEARCH -->
+    <div class="cat reveal">
+      <div class="cat-kicker">02 · Sök &amp; research</div>
+      <h2>Söka och förstå material</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://www.perplexity.ai" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/perplexity.png" alt="Perplexity"></div>
+          <div class="tmeta"><div class="tname">Perplexity</div><div class="tvar">perplexity.ai</div>
+          <p class="tdesc">En svarsmotor som söker på nätet och ger svar med källor. <b>Bäst för:</b> research där du vill kunna kolla källorna.</p></div>
+        </a>
+
+        <a class="tool" href="https://notebooklm.google.com" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/notebooklm.png" alt="NotebookLM"></div>
+          <div class="tmeta"><div class="tname">NotebookLM</div><div class="tvar">notebooklm.google.com</div>
+          <p class="tdesc">Googles verktyg som svarar utifrån dina egna dokument och kan göra podd-liknande ljudsammanfattningar. <b>Bäst för:</b> att förstå material du laddar upp.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- KOD -->
+    <div class="cat reveal">
+      <div class="cat-kicker">03 · Kod &amp; app-byggande</div>
+      <h2>Bygga med kod</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://claude.com/claude-code" target="_blank" rel="noopener">
+          <div class="tlogo mono cli" style="color:#B4481F">&gt;_</div>
+          <div class="tmeta"><div class="tname">Claude Code</div><div class="tvar">claude.com/claude-code</div>
+          <p class="tdesc">Anthropics kodverktyg som kör i terminalen och läser, skriver och ändrar kod åt dig. <b>Bäst för:</b> större koduppgifter över många filer.</p></div>
+        </a>
+
+        <a class="tool" href="https://cursor.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#111111">C</div>
+          <div class="tmeta"><div class="tname">Cursor</div><div class="tvar">cursor.com</div>
+          <p class="tdesc">En AI-kodredigerare som bygger på VS Code. <b>Bäst för:</b> att koda med en AI-parprogrammerare i en riktig editor.</p></div>
+        </a>
+
+        <a class="tool" href="https://lovable.dev" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#FF4D6D">L</div>
+          <div class="tmeta"><div class="tname">Lovable</div><div class="tvar">lovable.dev</div>
+          <p class="tdesc">Svenskt verktyg som bygger färdiga webbappar från en prompt. <b>Bäst för:</b> att snabbt få upp en fungerande sajt eller app utan kod.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- AGENTER -->
+    <div class="cat reveal">
+      <div class="cat-kicker">04 · Autonoma agenter</div>
+      <h2>AI som gör saker åt dig</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://manus.im" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/manus.png" alt="Manus"></div>
+          <div class="tmeta"><div class="tname">Manus</div><div class="tvar">manus.im</div>
+          <p class="tdesc">En självgående agent som planerar och utför uppgifter i molnet, inte bara svarar. <b>Bäst för:</b> att lämna över en hel uppgift och få tillbaka ett färdigt resultat.</p></div>
+        </a>
+
+        <a class="tool" href="https://openclaw.ai" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/openclaw.png" alt="OpenClaw"></div>
+          <div class="tmeta"><div class="tname">OpenClaw</div><div class="tvar">openclaw.ai</div>
+          <p class="tdesc">Öppen, självhostad agent som gör saker på riktigt: filer, terminal och appar som WhatsApp och Telegram. <b>Bäst för:</b> din egen agent kopplad till dina appar. Obs: det finns många falska kopior, använd openclaw.ai.</p></div>
+        </a>
+
+        <a class="tool" href="https://github.com/pewdiepie-archdaemon/odysseus" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/odysseus.png" alt="Odysseus"></div>
+          <div class="tmeta"><div class="tname">Odysseus</div><div class="tvar">github.com/pewdiepie-archdaemon</div>
+          <p class="tdesc">PewDiePies öppna, självhostade AI-arbetsyta som kör lokalt på din egen dator. <b>Bäst för:</b> en privat AI-miljö du äger helt själv. Inte samma som Odyssey.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- RÖST & MUSIK -->
+    <div class="cat reveal">
+      <div class="cat-kicker">05 · Röst &amp; musik</div>
+      <h2>Ljud och röst</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://elevenlabs.io" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/elevenlabs.png" alt="ElevenLabs"></div>
+          <div class="tmeta"><div class="tname">ElevenLabs</div><div class="tvar">elevenlabs.io</div>
+          <p class="tdesc">AI-röster och text-till-tal på 70+ språk, med röstkloning. <b>Bäst för:</b> naturligt voiceover-ljud.</p></div>
+        </a>
+
+        <a class="tool" href="https://wisprflow.ai" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/whisperflow.png" alt="Wispr Flow"></div>
+          <div class="tmeta"><div class="tname">Wispr Flow</div><div class="tvar">wisprflow.ai</div>
+          <p class="tdesc">Diktering som gör tal till städad text i vilken app som helst. <b>Bäst för:</b> att skriva med rösten snabbt. Heter Wispr Flow, inte WhisperFlow.</p></div>
+        </a>
+
+        <a class="tool" href="https://suno.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#111111">S</div>
+          <div class="tmeta"><div class="tname">Suno</div><div class="tvar">suno.com</div>
+          <p class="tdesc">Gör hela låtar med sång och musik från en prompt. <b>Bäst för:</b> att skapa färdiga låtar från en textidé.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- VIDEO -->
+    <div class="cat reveal">
+      <div class="cat-kicker">06 · Video</div>
+      <h2>Skapa och klippa video</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://www.heygen.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#7C3AED">H</div>
+          <div class="tmeta"><div class="tname">HeyGen</div><div class="tvar">heygen.com</div>
+          <p class="tdesc">Gör talande avatar-videor från ett manus, med läppsynk på 175+ språk. <b>Bäst för:</b> prata-till-kamera-video utan att filma.</p></div>
+        </a>
+
+        <a class="tool" href="https://higgsfield.ai" target="_blank" rel="noopener">
+          <div class="tlogo"><img src="images/logos/higgsfield.png" alt="Higgsfield"></div>
+          <div class="tmeta"><div class="tname">Higgsfield</div><div class="tvar">higgsfield.ai</div>
+          <p class="tdesc">AI-video känd för filmiska kamerarörelser som crash zoom och drönare. <b>Bäst för:</b> klipp med biokänsla. Kör flera modeller under huven.</p></div>
+        </a>
+
+        <a class="tool" href="https://dreamina.capcut.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#2B5CFF">S</div>
+          <div class="tmeta"><div class="tname">Seedance 2.0</div><div class="tvar">i Dreamina &amp; CapCut</div>
+          <p class="tdesc">ByteDances videomodell som gör korta HD-klipp med ljud. <b>Bäst för:</b> högkvalitativ kort AI-video. Nås via Dreamina och CapCut, inte en egen sajt.</p></div>
+        </a>
+
+        <a class="tool" href="https://klingai.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#0FB5AE">K</div>
+          <div class="tmeta"><div class="tname">Kling AI</div><div class="tvar">klingai.com</div>
+          <p class="tdesc">Kuaishous videomodell för text- och bild-till-video. <b>Bäst för:</b> realistisk rörelse från en stillbild.</p></div>
+        </a>
+
+        <a class="tool" href="https://www.capcut.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#111111">C</div>
+          <div class="tmeta"><div class="tname">CapCut</div><div class="tvar">capcut.com</div>
+          <p class="tdesc">Videoredigerare med massor av AI: autotextning, bakgrundsborttagning och autoklippning. <b>Bäst för:</b> snabb redigering av kortvideo.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- BILD -->
+    <div class="cat reveal">
+      <div class="cat-kicker">07 · Bild</div>
+      <h2>Skapa bilder</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://www.midjourney.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#111111">M</div>
+          <div class="tmeta"><div class="tname">Midjourney</div><div class="tvar">midjourney.com</div>
+          <p class="tdesc">Bildgenerator känd för snygga, stiliserade bilder. <b>Bäst för:</b> konstnärliga stillbilder. Numera en egen webbapp, inte bara Discord.</p></div>
+        </a>
+
+        <a class="tool" href="https://gemini.google.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#B8860B">N</div>
+          <div class="tmeta"><div class="tname">Nano Banana</div><div class="tvar">i Gemini-appen</div>
+          <p class="tdesc">Googles bildmodell i Gemini, stark på att behålla samma karaktär och redigera bilder med ord. <b>Bäst för:</b> att ändra bilder i en konversation.</p></div>
+        </a>
+
+        <a class="tool" href="https://chatgpt.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#10A37F">G</div>
+          <div class="tmeta"><div class="tname">GPT Image 2</div><div class="tvar">i ChatGPT</div>
+          <p class="tdesc">OpenAI:s senaste bildmodell, bra på att få med text i bilden. <b>Bäst för:</b> bilder där texten måste bli rätt. I ChatGPT heter det Images 2.0.</p></div>
+        </a>
+
+        <a class="tool" href="https://www.canva.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#00B8C4">C</div>
+          <div class="tmeta"><div class="tname">Canva</div><div class="tvar">canva.com</div>
+          <p class="tdesc">Designverktyg med inbyggd AI för bilder, text och layout. <b>Bäst för:</b> snabb design med mallar när du inte är designer.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- ANTECKNINGAR & SKRIVANDE -->
+    <div class="cat reveal">
+      <div class="cat-kicker">08 · Anteckningar &amp; skrivande</div>
+      <h2>Ordning och text</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://www.notion.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#111111">N</div>
+          <div class="tmeta"><div class="tname">Notion</div><div class="tvar">notion.com</div>
+          <p class="tdesc">Allt-i-ett arbetsyta för anteckningar, wikis och projekt, med inbyggd AI. <b>Bäst för:</b> att hålla ordning på allt på ett ställe.</p></div>
+        </a>
+
+        <a class="tool" href="https://obsidian.md" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#6C4CF1">O</div>
+          <div class="tmeta"><div class="tname">Obsidian</div><div class="tvar">obsidian.md</div>
+          <p class="tdesc">Anteckningsapp som sparar allt lokalt som vanliga filer du äger. <b>Bäst för:</b> ett privat, sammanlänkat kunskapsarkiv. AI bara via tillägg.</p></div>
+        </a>
+
+        <a class="tool" href="https://www.grammarly.com" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#15A97C">G</div>
+          <div class="tmeta"><div class="tname">Grammarly</div><div class="tvar">grammarly.com</div>
+          <p class="tdesc">Skrivhjälp som rättar grammatik och ton där du skriver. <b>Bäst för:</b> engelsk text. Svenskan är svag, så räkna inte med den.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- LOKALT -->
+    <div class="cat reveal">
+      <div class="cat-kicker">09 · Kör AI lokalt</div>
+      <h2>På din egen dator</h2>
+      <div class="grid">
+
+        <a class="tool" href="https://lmstudio.ai" target="_blank" rel="noopener">
+          <div class="tlogo mono" style="color:#3D5AFE">L</div>
+          <div class="tmeta"><div class="tname">LM Studio</div><div class="tvar">lmstudio.ai</div>
+          <p class="tdesc">App som laddar ner och kör AI-modeller direkt på din dator, utan internet. <b>Bäst för:</b> att köra öppna modeller lokalt och privat.</p></div>
+        </a>
+
+      </div>
+    </div>
+
+    <p class="fineprint reveal">AI-världen rör sig snabbt och versionsnummer ändras hela tiden. Listan speglar hur verktygen ser ut när jag skriver det här. Klicka på ett verktyg för att öppna det. Jag har ingen betald koppling till något av dem.</p>
+
+  </div>
+
+  <!-- CTA -->
+  <section id="kontakt" style="padding-top:24px">
+    <div class="wrap">
+      <div class="cta reveal">
+        <h2>Vill du lära dig AI, eller veta om ditt företag kan använda det?</h2>
+        <p>Jag hjälper dig komma igång, från första frågan till färdig rutin. Hör av dig så tar vi reda på om och var AI passar för dig eller ditt företag.</p>
+        <a class="btn btn-book" href="https://cal.com/jude-hwaijeh-oix30w/strategisamtal" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>Boka ett strategisamtal</a>
+        <div class="cta-or">eller hör av dig direkt</div>
+        <div class="cta-btns">
+          <a class="btn btn-ghost" href="mailto:jude@ikapp.ai">Mejla jude@ikapp.ai</a>
+          <a class="btn btn-ghost" href="https://instagram.com/joudgor">Skriv på Instagram</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="wrap">
+      <div class="h">@joudgor</div>
+      <div class="p">powered by Ikapp.ai</div>
+    </div>
+  </footer>
+
+  <div class="float-cta" id="floatCta">
+    <button class="fc-close" type="button" aria-label="Stäng">&times;</button>
+    <a class="fc-link" href="#kontakt">
+      <span class="fc-text">
+        <b>Kan ditt företag använda AI?</b>
+        <span>Eller vill du lära dig själv?</span>
+      </span>
+      <span class="fc-btn">Ta reda på det <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+    </a>
+  </div>
+
+</div>
+
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if(!('IntersectionObserver' in window)){els.forEach(function(e){e.classList.add('in');});}
+    else{
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      },{threshold:0, rootMargin:'0px 0px 12% 0px'});
+      els.forEach(function(e){io.observe(e);});
+    }
+    var fc=document.getElementById('floatCta');
+    if(fc){ var fcc=fc.querySelector('.fc-close'); if(fcc){ fcc.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); fc.style.display='none'; }); } }
+  })();
+</script>
+</body>
+</html>
